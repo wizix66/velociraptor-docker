@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 LABEL version="Velociraptor v0.6.9"
 LABEL description="Velociraptor server in a Docker container"
-LABEL maintainer="Wes Lambert, @therealwlambert"
+LABEL maintainer="wizix"
 COPY ./entrypoint .
 RUN chmod +x entrypoint && \
     apt-get update && \
