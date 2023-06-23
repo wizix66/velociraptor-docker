@@ -19,7 +19,8 @@ RUN chmod +x entrypoint && \
     wget -O /opt/velociraptor/mac/velociraptor_client "$MAC_BIN" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.exe "$WINDOWS_EXE" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.msi "$WINDOWS_MSI" && \
-    cp ./velociraptor /opt/velociraptor/linux/velociraptor && \
+    cp /velociraptor /opt/velociraptor/linux/ && \
+    chmod +x /opt/velociraptor/linux/velociraptor && \
     # Clean up 
     apt-get remove -y --purge curl wget jq && \
     apt-get clean
