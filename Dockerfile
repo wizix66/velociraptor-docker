@@ -3,9 +3,10 @@ LABEL version="Velociraptor v0.6.9"
 LABEL description="Velociraptor server in a Docker container"
 LABEL maintainer="wizix"
 COPY ./entrypoint .
-COPY ./velociraptor .
+COPY ./velociraptor /velociraptor/
 RUN chmod +x entrypoint && \
     chmod +x velociraptor && \
+    cp entrypoint /velociraptor/ && \
     apt-get update && \
     apt-get install -y curl wget jq rsync && \
     # Create dirs for Velo binaries
@@ -18,7 +19,7 @@ RUN chmod +x entrypoint && \
     wget -O /opt/velociraptor/mac/velociraptor_client "$MAC_BIN" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.exe "$WINDOWS_EXE" && \
     wget -O /opt/velociraptor/windows/velociraptor_client.msi "$WINDOWS_MSI" && \
-    cp velociraptor /opt/velociraptor/linux/ && \
+    cp velociraptor/velociraptor /opt/velociraptor/linux/ && \
     # Clean up 
     apt-get remove -y --purge curl wget jq && \
     apt-get clean
